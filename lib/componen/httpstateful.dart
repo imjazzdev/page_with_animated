@@ -1,12 +1,23 @@
-// import 'package:http/http.dart' as http;
-// class HttpStateful {
-//   String? id, name, hobby, createdAt;
+import 'dart:convert';
 
-//   HttpStateful({this.id, this.name, this.hobby, this.createdAt});
+import 'package:http/http.dart' as http;
 
-//   connectAPI(String name, String hobby) {
-//     Uri url = 'https://reqres.in/api/users';
+class HttpStateful {
+  String? id, name, job, createdAt;
 
-//     http.post(url)
-//   }
-// }
+  HttpStateful({this.id, this.name, this.job, this.createdAt});
+
+  static Future<HttpStateful> connectAPI(String name, String job) async {
+    Uri url = Uri.parse("https://reqres.in/api/users");
+
+    var result = await http.post(url, body: {"name": name, "job": job});
+
+    var data = json.decode(result.body);
+
+    return HttpStateful(
+        id: data["id"],
+        name: data["name"],
+        job: data["job"],
+        createdAt: data["createdAt"]);
+  }
+}

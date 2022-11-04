@@ -1,4 +1,5 @@
 import 'package:belajar/sceen/home_page.dart';
+import 'package:belajar/sceen/http_page.dart';
 import 'package:belajar/sceen/latihan_bloc.dart';
 import 'package:belajar/sceen/sign_page.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
           dividerColor: Colors.green[900]),
       title: 'Pandemic Activity',
       debugShowCheckedModeBanner: false,
-      home: SignPage(),
+      home: HttpPage(),
     );
   }
 }
